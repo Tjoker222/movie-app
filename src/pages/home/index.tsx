@@ -11,18 +11,19 @@ import { toast } from "react-toastify";
 
 export function HomePage() {
   
-  const [active = 1, setActive] = useState<number>();
+  const [active, setActive] = useState<number>(1);
   const [data, setData] = useState<CardMovie[] | null>([]);
 
   function changeFilterButton(filter: number){
     setActive(filter);
+    handleMovies(filter);
   }
 
   const {getMovies, getSeries} = useMovies();
 
-  async function handleMovies(){
+  async function handleMovies(filter: number){
 
-    if(active===1){
+    if(filter===1){
 
       const movies = await getMovies();
       if (types.isNativeError(movies)) {
@@ -42,11 +43,11 @@ export function HomePage() {
         return;
       }
 
-      setData([...(data as CardMovie[]),...movies, ...series])
-
+      const arrayMoviesAndSeries = [...movies, ...series]
+      setData(arrayMoviesAndSeries)
     }
 
-    if(active===2){
+    if(filter===2){
       const movies = await getMovies();
       if (types.isNativeError(movies)) {
         console.error(movies);
@@ -55,10 +56,12 @@ export function HomePage() {
         });
         return;
       }
-      setData(movies);
+
+      const ArrayMovies = movies;
+      setData(ArrayMovies);
     }
 
-    if(active===3){
+    if(filter===3){
       const series = await getSeries();
       if (types.isNativeError(series)) {
         console.error(series);
@@ -67,16 +70,18 @@ export function HomePage() {
         });
         return;
       }
-      setData(series);
+
+      const ArraySeries = series;
+      setData(ArraySeries);
     }
+
 
     
   }
 
   useEffect(()=>{
 
-    handleMovies();
-    console.log(data);
+    handleMovies(1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   
