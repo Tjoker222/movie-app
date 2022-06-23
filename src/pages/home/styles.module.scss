@@ -1,3 +1,79 @@
-.initial{
+.container{
+    width: 100%;
+    position: fixed;
+    justify-content: center;
+    padding: 80px 120px;
+}
+
+.content{
+    width: 100%;
     display: flex;
+    flex-direction: column;
+    row-gap: 80px;
+}
+
+.initialTitle{
+    width: 38%;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+
+    h1{
+        font-size: 64px;
+    }
+
+    h5{
+        font-weight: 400;
+        color: var(--grey200);
+    }
+}
+
+.filmsContent{
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    width: 100%;
+}
+
+.FilmsFilter{
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    column-gap: 32px;
+    padding: 8px;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.26);
+    .filterOption{
+        display: flex;
+        border-radius: 8px;
+        padding: 8px 32px;
+        transition: 0.2s;
+        h5{
+            font-weight: 500;
+        }
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+
+.optionActive{
+    background-color: var(--primary);
+    color: #ebe9fe;
+}
+
+.optionDeactive{
+
+    background-color: none;
+    color: var(--grey);
+
+}
+
+.allText{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    column-gap: 8px;
+    color: #767e94;
 }
