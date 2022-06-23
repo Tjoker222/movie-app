@@ -1,17 +1,85 @@
 import { SearchButton } from '../../components/SearchButton';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useMovies } from '../../hooks/useMovies';
 
 import styles from './styles.module.scss';
+import { CardMovie } from '../../types/movies';
+import { types } from 'util';
+import { toast } from "react-toastify";
 
 
 
 export function HomePage() {
   
   const [active = 1, setActive] = useState<number>();
+  const [data, setData] = useState<CardMovie[] | null>([]);
 
   function changeFilterButton(filter: number){
     setActive(filter);
   }
+
+  const {getMovies, getSeries} = useMovies();
+
+  async function handleMovies(){
+
+    if(active===1){
+
+      const movies = await getMovies();
+      if (types.isNativeError(movies)) {
+        console.error(movies);
+        toast(movies.message, {
+          type: "error",
+        });
+        return;
+      }
+    
+      const series = await getSeries();
+      if (types.isNativeError(series)) {
+        console.error(series);
+        toast(series.message, {
+          type: "error",
+        });
+        return;
+      }
+
+      setData([...(data as CardMovie[]),...movies, ...series])
+
+    }
+
+    if(active===2){
+      const movies = await getMovies();
+      if (types.isNativeError(movies)) {
+        console.error(movies);
+        toast(movies.message, {
+          type: "error",
+        });
+        return;
+      }
+      setData(movies);
+    }
+
+    if(active===3){
+      const series = await getSeries();
+      if (types.isNativeError(series)) {
+        console.error(series);
+        toast(series.message, {
+          type: "error",
+        });
+        return;
+      }
+      setData(series);
+    }
+
+    
+  }
+
+  useEffect(()=>{
+
+    handleMovies();
+    console.log(data);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+  
 
 
   return (
