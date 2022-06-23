@@ -1,0 +1,32 @@
+.container{
+    width: 100%;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 120px;
+    background-color: #12182981;
+}
+
+.content{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h4{
+        font-weight: 500;
+        color: var(--grey200);
+    }
+
+    .options{
+        display: flex;
+        flex-direction: row;
+        column-gap: 40px;
+
+        .suggest{
+            display: flex;
+            flex-direction: row;
+            column-gap: 8px;
+        }
+    }
+}

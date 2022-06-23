@@ -6,8 +6,10 @@ export function HomePage() {
 
   return (
     <>
-      <div className={styles.initial}>
-        <h5>oiasjdoiasj</h5>
+      <div className={styles.container}>
+        <div className={styles.content}>
+
+        </div>
       </div>
     </>
   );
