@@ -8,6 +8,7 @@ import { types } from 'util';
 import { toast } from "react-toastify";
 import { FilmeFilter } from '../../components/FilmeFilter';
 import { useFilterContext } from '../../contexts/filter-context';
+import { Filter } from '../../types/filter';
 
 
 
@@ -21,10 +22,13 @@ export function HomePage() {
   }*/
 
   const {getMovies, getSeries} = useMovies();
+  const {CurrentFilter} = useFilterContext();
 
-  async function handleMovies(filter: string){
+  async function handleMovies(filter: Filter){
 
-    if(filter==="All"){
+    //setCurrentFilter(filter)
+
+    if(filter.name==="All"){
 
       const movies = await getMovies();
       if (types.isNativeError(movies)) {
@@ -48,7 +52,7 @@ export function HomePage() {
       setData(arrayMoviesAndSeries)
     }
 
-    if(filter==="Movies"){
+    if(filter.name==="Movies"){
       const movies = await getMovies();
       if (types.isNativeError(movies)) {
         console.error(movies);
@@ -62,7 +66,7 @@ export function HomePage() {
       setData(ArrayMovies);
     }
 
-    if(filter==="Tv Shows"){
+    if(filter.name==="Tv Shows"){
       const series = await getSeries();
       if (types.isNativeError(series)) {
         console.error(series);
@@ -82,7 +86,9 @@ export function HomePage() {
 
   useEffect(()=>{
 
-    handleMovies("All");
+    handleMovies({name:"All"});
+    console.log(CurrentFilter);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   
