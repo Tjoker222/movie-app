@@ -6,18 +6,18 @@ import styles from './styles.module.scss';
 import { CardMovie } from '../../types/movies';
 import { types } from 'util';
 import { toast } from "react-toastify";
+import { FilmeFilter } from '../../components/FilmeFilter';
 
 
 
 export function HomePage() {
   
-  const [active, setActive] = useState<number>(1);
   const [data, setData] = useState<CardMovie[] | null>([]);
 
-  function changeFilterButton(filter: number){
+  /*function changeFilterButton(filter: number){
     setActive(filter);
     handleMovies(filter);
-  }
+  }*/
 
   const {getMovies, getSeries} = useMovies();
 
@@ -107,29 +107,11 @@ export function HomePage() {
 
           <div className={styles.filmsContent}>
 
-            <div className={styles.FilmsFilter}>
-
-              <div className={`${styles.filterOption} 
-              ${active===1?styles.optionActive:
-              styles.optionDeactive}`} onClick={()=>{changeFilterButton(1)}}>
-                <h5>All</h5>
-              </div>
-              <div className={`${styles.filterOption} 
-              ${active===2?styles.optionActive:
-              styles.optionDeactive}`} onClick={()=>{changeFilterButton(2)}}>
-                <h5>Movies</h5>
-              </div>
-              <div className={`${styles.filterOption} 
-              ${active===3?styles.optionActive:
-              styles.optionDeactive}`} onClick={()=>{changeFilterButton(3)}}>
-                <h5>TV Shows</h5>
-              </div>
-
-            </div>
+            <FilmeFilter></FilmeFilter>
 
             <div className={styles.allText}>
               <h1>All</h1>
-              <h5>(120)</h5>
+              <h5>({data?.length})</h5>
             </div>
 
 

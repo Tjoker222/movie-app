@@ -36,40 +36,6 @@
     width: 100%;
 }
 
-.FilmsFilter{
-    width: fit-content;
-    display: flex;
-    flex-direction: row;
-    column-gap: 32px;
-    padding: 8px;
-    border-radius: 12px;
-    background-color: rgba(0, 0, 0, 0.26);
-    .filterOption{
-        display: flex;
-        border-radius: 8px;
-        padding: 8px 32px;
-        transition: 0.2s;
-        h5{
-            font-weight: 500;
-        }
-        &:hover{
-            cursor: pointer;
-        }
-    }
-}
-
-.optionActive{
-    background-color: var(--primary);
-    color: #ebe9fe;
-}
-
-.optionDeactive{
-
-    background-color: none;
-    color: var(--grey);
-
-}
-
 .allText{
     display: flex;
     flex-direction: row;
