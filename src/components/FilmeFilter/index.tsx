@@ -1,31 +1,32 @@
 import styles from './styles.module.scss';
 import { useState } from 'react';
+import { FilterContext, TestContext } from '../../contexts/filter-context';
+import { Filter } from '../../types/filter';
+
 
 
 export function FilmeFilter() {
+
+  const filters: Filter[] = [
+    {name: "All"},
+    {name: "Movies"},
+    {name: "Tv Shows"}
+  ]
   
-  const [active, setActive] = useState<number>(1);
+  const [CurrentFilter, setCurrentFilter] = useState<Filter>(filters[0]);
 
 
   return (
     <>
       <div className={styles.FilmsFilter}>
 
-        <div className={`${styles.filterOption} 
-        ${active===1?styles.optionActive:
-        styles.optionDeactive}`} onClick={()=>{setActive(1)}}>
-          <h5>All</h5>
-        </div>
-        <div className={`${styles.filterOption} 
-        ${active===2?styles.optionActive:
-        styles.optionDeactive}`} onClick={()=>{setActive(2)}}>
-          <h5>Movies</h5>
-        </div>
-        <div className={`${styles.filterOption} 
-        ${active===3?styles.optionActive:
-        styles.optionDeactive}`} onClick={()=>{setActive(3)}}>
-          <h5>TV Shows</h5>
-        </div>
+        <FilterContext.Provider value={{filters, CurrentFilter, setCurrentFilter}}>
+          <TestContext 
+            filterOption={styles.filterOption} 
+            optionActive={styles.optionActive}
+            optionDeactive={styles.optionDeactive}
+          />
+        </FilterContext.Provider>
 
       </div>
     </>

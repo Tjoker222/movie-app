@@ -7,6 +7,7 @@ import { CardMovie } from '../../types/movies';
 import { types } from 'util';
 import { toast } from "react-toastify";
 import { FilmeFilter } from '../../components/FilmeFilter';
+import { useFilterContext } from '../../contexts/filter-context';
 
 
 
@@ -21,9 +22,9 @@ export function HomePage() {
 
   const {getMovies, getSeries} = useMovies();
 
-  async function handleMovies(filter: number){
+  async function handleMovies(filter: string){
 
-    if(filter===1){
+    if(filter==="All"){
 
       const movies = await getMovies();
       if (types.isNativeError(movies)) {
@@ -47,7 +48,7 @@ export function HomePage() {
       setData(arrayMoviesAndSeries)
     }
 
-    if(filter===2){
+    if(filter==="Movies"){
       const movies = await getMovies();
       if (types.isNativeError(movies)) {
         console.error(movies);
@@ -61,7 +62,7 @@ export function HomePage() {
       setData(ArrayMovies);
     }
 
-    if(filter===3){
+    if(filter==="Tv Shows"){
       const series = await getSeries();
       if (types.isNativeError(series)) {
         console.error(series);
@@ -81,7 +82,7 @@ export function HomePage() {
 
   useEffect(()=>{
 
-    handleMovies(1);
+    handleMovies("All");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   
