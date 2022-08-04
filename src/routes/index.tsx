@@ -1,15 +1,18 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { HomePage } from '../pages/home';
-import { Navbar } from '../components/Navbar';
+import { HomePage } from "../pages/home";
+import { Navbar } from "../components/Navbar";
+import { FiltersProvider } from "../contexts/filter-context";
 
 export function AppRoutes() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-      </Routes>
+      <FiltersProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </FiltersProvider>
     </BrowserRouter>
   );
 }

@@ -1,34 +1,29 @@
-import styles from './styles.module.scss';
-import { useState } from 'react';
-import { FilterContext, TestContext } from '../../contexts/filter-context';
+import {useFiltersContext} from '../../contexts/filter-context'
 import { Filter } from '../../types/filter';
-
-
+import styles from './styles.module.scss'
 
 export function FilmFilter() {
+  const { CurrentFilter, setCurrentFilter, filters } = useFiltersContext();
 
-  const filters: Filter[] = [
-    {name: "All"},
-    {name: "Movies"},
-    {name: "Tv Shows"}
-  ]
-  
-  const [CurrentFilter, setCurrentFilter] = useState<Filter>(filters[0]);
-
+  function handleFilterChange(newFilter: Filter) {
+    setCurrentFilter(newFilter);
+  }
 
   return (
-    <>
-      <div className={styles.FilmsFilter}>
-
-        <FilterContext.Provider value={{filters, CurrentFilter, setCurrentFilter}}>
-          <TestContext 
-            filterOption={styles.filterOption} 
-            optionActive={styles.optionActive}
-            optionDeactivate={styles.optionDeactivate}
-          />
-        </FilterContext.Provider>
-
-      </div>
-    </>
+    <div className={styles.filmsFilter}>
+      {filters.map((filter) => (
+        <button
+          key={filter.name}
+          className={`${styles.filterOption} ${
+            filter.name === CurrentFilter.name ? styles.optionActive : styles.optionDeactivate
+          }`}
+          onClick={() => {
+            handleFilterChange(filter);
+          }}
+        >
+          {filter.name}
+        </button>
+      ))}
+    </div>
   );
 }

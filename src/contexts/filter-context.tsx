@@ -1,43 +1,26 @@
-import { createContext, useContext } from "react";
-import { Filter, FilterContextData } from "../types/filter";
+import { createContext, ReactNode, useContext, useState } from "react";
+import { FilterContextData, Filter } from "../types/filter";
 
-export const FilterContext = createContext<FilterContextData>(
+const FiltersContext = createContext<FilterContextData>(
   {} as FilterContextData
 );
 
-interface filterProps {
-  filterOption: string;
-  optionActive: string;
-  optionDeactivate: string;
-}
+export const FiltersProvider = ({ children }: { children: ReactNode }) => {
+  const [filters] = useState<Filter[]>([
+    { name: "All" },
+    { name: "Movies" },
+    { name: "Tv Shows" },
+  ]);
 
-export function TestContext({
-  filterOption,
-  optionActive,
-  optionDeactivate,
-}: filterProps) {
-  const { CurrentFilter, setCurrentFilter, filters } = useFilterContext();
-
-  function handleFilterChange(newFilter: Filter) {
-    setCurrentFilter(newFilter);
-  }
+  const [CurrentFilter, setCurrentFilter] = useState<Filter>(filters[0]);
 
   return (
-    <>
-      {filters.map((filter) => (
-        <div
-          className={`${filterOption} ${
-            filter.name === CurrentFilter.name ? optionActive : optionDeactivate
-          }`}
-          onClick={() => {
-            handleFilterChange(filter);
-          }}
-        >
-          <h5>{filter.name}</h5>
-        </div>
-      ))}
-    </>
+    <FiltersContext.Provider
+      value={{ filters, CurrentFilter, setCurrentFilter }}
+    >
+      {children}
+    </FiltersContext.Provider>
   );
-}
+};
 
-export const useFilterContext = () => useContext(FilterContext);
+export const useFiltersContext = () => useContext(FiltersContext);

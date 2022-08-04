@@ -1,4 +1,4 @@
-.FilmsFilter{
+.filmsFilter{
     width: fit-content;
     display: flex;
     flex-direction: row;
@@ -11,6 +11,7 @@
         border-radius: 8px;
         padding: 8px 32px;
         transition: 0.2s;
+        border: 2px solid transparent;
         h5{
             font-weight: 500;
         }
@@ -22,12 +23,13 @@
 
 .optionActive{
     background-color: var(--primary);
+    border: 2px solid transparent;
     color: #ebe9fe;
 }
 
-.optionDeactive{
+.optionDeactivate{
 
-    background-color: none;
+    background-color: transparent;
     color: var(--grey);
 
 }
