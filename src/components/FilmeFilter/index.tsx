@@ -5,7 +5,7 @@ import { Filter } from '../../types/filter';
 
 
 
-export function FilmeFilter() {
+export function FilmFilter() {
 
   const filters: Filter[] = [
     {name: "All"},
@@ -24,7 +24,7 @@ export function FilmeFilter() {
           <TestContext 
             filterOption={styles.filterOption} 
             optionActive={styles.optionActive}
-            optionDeactive={styles.optionDeactive}
+            optionDeactivate={styles.optionDeactivate}
           />
         </FilterContext.Provider>
 

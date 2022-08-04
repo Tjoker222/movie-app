@@ -1,13 +1,13 @@
 import { SearchButton } from '../../components/SearchButton';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useMovies } from '../../hooks/useMovies';
 
 import styles from './styles.module.scss';
 import { CardMovie } from '../../types/movies';
 import { types } from 'util';
 import { toast } from "react-toastify";
-import { FilmeFilter } from '../../components/FilmeFilter';
-import { useFilterContext } from '../../contexts/filter-context';
+import { FilmFilter } from '../../components/FilmeFilter';
+import { FilterContext } from '../../contexts/filter-context';
 import { Filter } from '../../types/filter';
 
 
@@ -22,7 +22,7 @@ export function HomePage() {
   }*/
 
   const {getMovies, getSeries} = useMovies();
-  const {CurrentFilter} = useFilterContext();
+  const {CurrentFilter} = useContext(FilterContext);
 
   async function handleMovies(filter: Filter){
 
@@ -87,8 +87,7 @@ export function HomePage() {
   useEffect(()=>{
 
     handleMovies({name:"All"});
-    console.log(CurrentFilter);
-
+    console.log(CurrentFilter)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   
@@ -114,7 +113,7 @@ export function HomePage() {
 
           <div className={styles.filmsContent}>
 
-            <FilmeFilter></FilmeFilter>
+            <FilmFilter ></FilmFilter>
 
             <div className={styles.allText}>
               <h1>All</h1>
