@@ -15,18 +15,10 @@ import { Filter } from '../../types/filter';
 export function HomePage() {
   
   const [data, setData] = useState<CardMovie[] | null>([]);
-
-  /*function changeFilterButton(filter: number){
-    setActive(filter);
-    handleMovies(filter);
-  }*/
-
   const {getMovies, getSeries} = useMovies();
   const {CurrentFilter} = useFiltersContext();
 
   async function handleMovies(filter: Filter){
-
-    //setCurrentFilter(filter)
 
     if(filter.name==="All"){
 
@@ -87,7 +79,7 @@ export function HomePage() {
   useEffect(()=>{
 
     handleMovies(CurrentFilter);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[CurrentFilter])
   
 
