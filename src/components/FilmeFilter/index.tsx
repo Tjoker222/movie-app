@@ -1,6 +1,6 @@
-import {useFiltersContext} from '../../contexts/filter-context'
+import { useFiltersContext } from '../../contexts/filter-context';
 import { Filter } from '../../types/filter';
-import styles from './styles.module.scss'
+import styles from './styles.module.scss';
 
 export function FilmFilter() {
   const { CurrentFilter, setCurrentFilter, filters } = useFiltersContext();
@@ -15,7 +15,9 @@ export function FilmFilter() {
         <button
           key={filter.name}
           className={`${styles.filterOption} ${
-            filter.name === CurrentFilter.name ? styles.optionActive : styles.optionDeactivate
+            filter.name === CurrentFilter.name
+              ? styles.optionActive
+              : styles.optionDeactivate
           }`}
           onClick={() => {
             handleFilterChange(filter);
