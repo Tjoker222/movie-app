@@ -1,9 +1,9 @@
 export type Filter = {
-    name: string;
-}
+  name: string;
+};
 
 export type FilterContextData = {
-    filters: Filter[],
-    CurrentFilter: Filter,
-    setCurrentFilter: (filter: Filter)=>void
-}
+  filters: Filter[];
+  CurrentFilter: Filter;
+  setCurrentFilter: (filter: Filter) => void;
+};

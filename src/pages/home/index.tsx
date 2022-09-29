@@ -1,27 +1,22 @@
-import { SearchButton } from '../../components/SearchButton';
-import { useEffect, useState } from 'react';
-import { useMovies } from '../../hooks/useMovies';
+import { SearchButton } from "../../components/SearchButton";
+import { useEffect, useState } from "react";
+import { useMovies } from "../../hooks/useMovies";
 
-import styles from './styles.module.scss';
-import { CardMovie } from '../../types/movies';
-import { types } from 'util';
+import styles from "./styles.module.scss";
+import { CardMovie } from "../../types/movies";
+import { types } from "util";
 import { toast } from "react-toastify";
-import { FilmFilter } from '../../components/FilmeFilter';
-import { useFiltersContext } from '../../contexts/filter-context';
-import { Filter } from '../../types/filter';
-
-
+import { FilmFilter } from "../../components/FilmeFilter";
+import { useFiltersContext } from "../../contexts/filter-context";
+import { Filter } from "../../types/filter";
 
 export function HomePage() {
-  
   const [data, setData] = useState<CardMovie[] | null>([]);
-  const {getMovies, getSeries} = useMovies();
-  const {CurrentFilter} = useFiltersContext();
+  const { getMovies, getSeries } = useMovies();
+  const { CurrentFilter } = useFiltersContext();
 
-  async function handleMovies(filter: Filter){
-
-    if(filter.name==="All"){
-
+  async function handleMovies(filter: Filter) {
+    if (filter.name === "All") {
       const movies = await getMovies();
       if (types.isNativeError(movies)) {
         console.error(movies);
@@ -30,7 +25,7 @@ export function HomePage() {
         });
         return;
       }
-    
+
       const series = await getSeries();
       if (types.isNativeError(series)) {
         console.error(series);
@@ -40,11 +35,11 @@ export function HomePage() {
         return;
       }
 
-      const arrayMoviesAndSeries = [...movies, ...series]
-      setData(arrayMoviesAndSeries)
+      const arrayMoviesAndSeries = [...movies, ...series];
+      setData(arrayMoviesAndSeries);
     }
 
-    if(filter.name==="Movies"){
+    if (filter.name === "Movies") {
       const movies = await getMovies();
       if (types.isNativeError(movies)) {
         console.error(movies);
@@ -58,7 +53,7 @@ export function HomePage() {
       setData(ArrayMovies);
     }
 
-    if(filter.name==="Tv Shows"){
+    if (filter.name === "Tv Shows") {
       const series = await getSeries();
       if (types.isNativeError(series)) {
         console.error(series);
@@ -71,49 +66,37 @@ export function HomePage() {
       const ArraySeries = series;
       setData(ArraySeries);
     }
-
-
-    
   }
 
-  useEffect(()=>{
-
+  useEffect(() => {
     handleMovies(CurrentFilter);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[CurrentFilter])
-  
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [CurrentFilter]);
 
   return (
     <>
       <div className={styles.container}>
         <div className={styles.content}>
-
           <div className={styles.initialTitle}>
-
             <h1>MaileHereko</h1>
 
             <h5>
-              List of movies and TV Shows, I, Pramod Poudel have watched till date. 
-              Explore what I have watched and also feel free to make a suggestion. 😉
+              List of movies and TV Shows, I, Pramod Poudel have watched till
+              date. Explore what I have watched and also feel free to make a
+              suggestion. 😉
             </h5>
 
             <SearchButton></SearchButton>
-
           </div>
 
           <div className={styles.filmsContent}>
-
             <FilmFilter></FilmFilter>
 
             <div className={styles.allText}>
               <h1>All</h1>
               <h5>({data?.length})</h5>
             </div>
-
-
           </div>
-
         </div>
       </div>
     </>

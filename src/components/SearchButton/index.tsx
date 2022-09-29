@@ -1,10 +1,7 @@
-import styles from './styles.module.scss';
-import  SearchIcon from '../../assets/Icon/search-normal.svg'
-
+import styles from "./styles.module.scss";
+import SearchIcon from "../../assets/Icon/search-normal.svg";
 
 export function SearchButton() {
-  
-
   return (
     <>
       <form className={styles.container}>
