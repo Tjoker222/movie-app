@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { FilmFilter } from "../../components/FilmeFilter";
 import { useFiltersContext } from "../../contexts/filter-context";
 import { Filter } from "../../types/filter";
+import { Card } from "../../components/Card";
 
 export function HomePage() {
   const [data, setData] = useState<CardMovie[] | null>([]);
@@ -86,17 +87,33 @@ export function HomePage() {
               suggestion. 😉
             </h5>
 
-            <SearchButton></SearchButton>
+            <SearchButton />
           </div>
 
           <div className={styles.filmsContent}>
-            <FilmFilter></FilmFilter>
+            <FilmFilter />
 
             <div className={styles.allText}>
               <h1>All</h1>
               <h5>({data?.length})</h5>
             </div>
           </div>
+        </div>
+        <div className={styles.cardGrid}>
+          {data != null && (
+            <>
+              {data?.map((res) => (
+                <Card
+                  id={res?.id}
+                  original_title={res?.original_title}
+                  poster_path={res?.poster_path}
+                  vote_avarege={res?.vote_avarege}
+                  onClick={() => console.log("Ok")}
+                  key={res?.id}
+                />
+              ))}
+            </>
+          )}
         </div>
       </div>
     </>
