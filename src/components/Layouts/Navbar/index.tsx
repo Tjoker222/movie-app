@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
-import MovieIcon from "../../assets/Icon/movie-icon.svg";
-import SuggestArrow from "../../assets/Icon/arrow-right.svg";
+import MovieIcon from "../../../assets/Icon/movie-icon.svg";
+import SuggestArrow from "../../../assets/Icon/arrow-right.svg";
 
 export function Navbar() {
   return (

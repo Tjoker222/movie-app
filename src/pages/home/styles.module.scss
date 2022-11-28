@@ -2,7 +2,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    row-gap: 24px;
+    row-gap: 2.4rem;
     justify-content: center;
 }
 
@@ -10,8 +10,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    row-gap: 80px;
-    padding: 0px 120px;
+    row-gap: 8rem;
+    padding: 0 12rem;
 }
 
 .initialTitle{
@@ -19,22 +19,23 @@
     justify-content: flex-start;
     display: flex;
     flex-direction: column;
-    row-gap: 16px;
+    row-gap: 1.6rem;
 
     h1{
-        font-size: 64px;
+        font-size: 6.4rem;
     }
 
     h5{
         font-weight: 400;
         color: var(--grey200);
+        font-size: 1.328rem;
     }
 }
 
 .filmsContent{
     display: flex;
     flex-direction: column;
-    row-gap: 24px;
+    row-gap: 2.4rem;
     width: 100%;
 }
 
@@ -42,14 +43,15 @@
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    column-gap: 8px;
+    column-gap: 0.8rem;
     color: #767e94;
 }
 
 .cardGrid{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 32px;
-    row-gap: 20px;
-    padding: 0px 120px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: center;
+    padding: 2.4rem 12rem;
+    row-gap: 2.4rem;
+    column-gap: 2.0rem;
 }

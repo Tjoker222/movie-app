@@ -4,7 +4,7 @@ export interface CardProps {
   id: number;
   original_title: string;
   poster_path: string;
-  vote_avarege: number;
+  vote_average: number;
   onClick: () => void;
 }
 
@@ -12,7 +12,7 @@ export function Card({
   id,
   original_title,
   poster_path,
-  vote_avarege,
+  vote_average,
   onClick,
 }: CardProps) {
   return (
@@ -23,7 +23,7 @@ export function Card({
           src={`https://image.tmdb.org/t/p/original${poster_path}`}
         />
         <div className={styles.rankingContainer}>
-          <span className={styles.rating}>{vote_avarege}</span>
+          <span className={styles.rating}>{vote_average}</span>
         </div>
       </div>
       <footer className={styles.title}>

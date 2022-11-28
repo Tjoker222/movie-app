@@ -2,7 +2,7 @@ export type CardMovie = {
   id: number;
   poster_path: string;
   original_title: string;
-  vote_avarege: number;
+  vote_average: number;
 };
 type Genre = {
   id: number;

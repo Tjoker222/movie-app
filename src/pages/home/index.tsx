@@ -107,7 +107,7 @@ export function HomePage() {
                   id={res?.id}
                   original_title={res?.original_title}
                   poster_path={res?.poster_path}
-                  vote_avarege={res?.vote_avarege}
+                  vote_average={res?.vote_average}
                   onClick={() => console.log("Ok")}
                   key={res?.id}
                 />
