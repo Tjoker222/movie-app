@@ -1,3 +1,4 @@
+import { useMovies } from "../../hooks/useMovies";
 import styles from "./styles.module.scss";
 
 export interface CardProps {
@@ -15,8 +16,17 @@ export function Card({
   vote_average,
   onClick,
 }: CardProps) {
+
+  const { getMovieDetails } = useMovies();
+
+  async function okok(){
+    const x = await getMovieDetails('436270')
+    console.log(x);
+  }
+
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={()=>okok()}>
       <div className={styles.content}>
         <img
           className={styles.thumbnail}
@@ -32,3 +42,7 @@ export function Card({
     </div>
   );
 }
+function getMovieDetails() {
+  throw new Error("Function not implemented.");
+}
+

@@ -33,27 +33,3 @@
         font-size: 1.6rem;
     }
 }
-
-.filmsContent{
-    display: flex;
-    flex-direction: column;
-    row-gap: 2.4rem;
-    width: 100%;
-}
-
-.allText{
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    column-gap: 0.8rem;
-    color: #767e94;
-}
-
-.cardGrid{
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    align-items: center;
-    padding: 2.4rem 12rem;
-    row-gap: 2.4rem;
-    column-gap: 2.0rem;
-}

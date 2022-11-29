@@ -1,35 +1,33 @@
-.filmsFilter{
-    width: fit-content;
+.filmsFilter {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  column-gap: 3.2rem;
+  padding: 0.8rem;
+  border-radius: 1.2rem;
+  background-color: rgba(0, 0, 0, 0.26);
+  .filterOption {
     display: flex;
-    flex-direction: row;
-    column-gap: 3.2rem;
-    padding: 0.8rem;
-    border-radius: 1.2rem;
-    background-color: rgba(0, 0, 0, 0.26);
-    .filterOption{
-        display: flex;
-        border-radius: 0.8rem;
-        padding: 0.8rem 3.2rem;
-        transition: 0.2s;
-        border: 0.2rem solid transparent;
-        h5{
-            font-weight: 500;
-        }
-        &:hover{
-            cursor: pointer;
-        }
-    }
-}
-
-.optionActive{
-    background-color: var(--primary);
+    border-radius: 0.8rem;
+    padding: 0.8rem 3.2rem;
+    transition: 0.2s;
     border: 0.2rem solid transparent;
-    color: #ebe9fe;
+    font-weight: 600;
+    font-size: 1.6rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
-.optionDeactivate{
+.optionActive {
+  background-color: var(--primary);
+  border: 0.2rem solid transparent;
+  color: #ebe9fe;
+}
 
-    background-color: transparent;
-    color: var(--grey);
-
+.optionDeactivate {
+  background-color: transparent;
+  color: var(--grey);
 }
