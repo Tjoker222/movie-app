@@ -1,10 +1,35 @@
+import { useEffect, useState } from "react";
+import { useMovies } from "../../hooks/useMovies";
 import styles from "./styles.module.scss";
-import { useSearchParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { MovieDetail } from "../../types/movies";
+import { types } from "util";
+import { toast } from "react-toastify";
 
 export function DetailPage() {
-  const search = useLocation().search;
-  const id = new URLSearchParams(search).get("id");
-  console.log(id);
+  const { id } = useParams();
+
+  const { getMovieDetails } = useMovies();
+  const [data, setData] = useState<MovieDetail | null>();
+
+  async function handleShowDetails() {
+    if (id) {
+      let showDetail = await getMovieDetails(id);
+      if (types.isNativeError(showDetail)) {
+        console.error(showDetail);
+        toast(showDetail.message, {
+          type: "error",
+        });
+        return;
+      }
+      setData(showDetail)
+    }
+  }
+
+  useEffect(() => {
+    handleShowDetails();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>

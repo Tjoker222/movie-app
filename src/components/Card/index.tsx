@@ -16,21 +16,18 @@ export function Card({
   vote_average,
   onClick,
 }: CardProps) {
-
-  const { getMovieDetails } = useMovies();
-
-  async function okok(){
-    const x = await getMovieDetails('436270')
-    console.log(x);
-  }
-
+  const { handleNavigateToDetails } = useMovies();
 
   return (
-    <div className={styles.container} onClick={()=>okok()}>
+    <div
+      className={styles.container}
+      onClick={() => handleNavigateToDetails({ id: id })}
+    >
       <div className={styles.content}>
         <img
           className={styles.thumbnail}
           src={`https://image.tmdb.org/t/p/original${poster_path}`}
+          alt={original_title}
         />
         <div className={styles.rankingContainer}>
           <span className={styles.rating}>{vote_average}</span>
@@ -42,7 +39,3 @@ export function Card({
     </div>
   );
 }
-function getMovieDetails() {
-  throw new Error("Function not implemented.");
-}
-
