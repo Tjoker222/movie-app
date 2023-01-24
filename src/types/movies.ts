@@ -22,4 +22,6 @@ export type MovieDetail = {
   last_air_date: string;
   episode_run_time: number[];
   runtime: number;
+  poster_path: string;
+  tagline: string;
 };

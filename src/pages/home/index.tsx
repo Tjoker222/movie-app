@@ -38,6 +38,7 @@ export function HomePage() {
 
       const arrayMoviesAndSeries = [...movies, ...series];
       setData(arrayMoviesAndSeries);
+      console.log(arrayMoviesAndSeries);
     }
 
     if (filter.name === "Movies") {

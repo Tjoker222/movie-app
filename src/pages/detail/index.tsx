@@ -22,27 +22,46 @@ export function DetailPage() {
         });
         return;
       }
-      setData(showDetail)
+      setData(showDetail);
+      console.log(showDetail);
     }
   }
 
   useEffect(() => {
     handleShowDetails();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.initialTitle}>
-            <h1>MaileHereko</h1>
+          <div className={styles.initialThumb}>
+            <img
+              className={styles.initialImage}
+              alt={data?.original_title}
+              src={`https://image.tmdb.org/t/p/original${data?.poster_path}`}
+            />
+            <div className={styles.imageBackground} />
+            <div className={styles.titleDescription}>
+              <div className={styles.categories}>
+                <p>MaileHereko</p>
+                <p>/</p>
+                <p>Tv shows</p>
+              </div>
+              <h1>{data?.original_title}</h1>
+            </div>
+          </div>
+          <div className={styles.showDescription}>
+            <img
+              className={styles.descriptionImage}
+              alt={data?.original_title}
+              src={`https://image.tmdb.org/t/p/original${data?.poster_path}`}
+            />
+            <div className={styles.showDetails}>
+              <h2>{data?.tagline}</h2>
 
-            <h5>
-              List of movies and TV Shows, I, Pramod Poudel have watched till
-              date. Explore what I have watched and also feel free to make a
-              suggestion. 😉
-            </h5>
+            </div>
           </div>
         </div>
       </div>
