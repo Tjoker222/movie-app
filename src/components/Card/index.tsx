@@ -1,4 +1,5 @@
 import { useMovies } from "../../hooks/useMovies";
+import Star from "../../assets/Icon/star.svg";
 import styles from "./styles.module.scss";
 
 export interface CardProps {
@@ -6,7 +7,7 @@ export interface CardProps {
   original_title: string;
   poster_path: string;
   vote_average: number;
-  onClick: () => void;
+  typeShow: 'movie' | 'series';
 }
 
 export function Card({
@@ -14,14 +15,14 @@ export function Card({
   original_title,
   poster_path,
   vote_average,
-  onClick,
+  typeShow
 }: CardProps) {
   const { handleNavigateToDetails } = useMovies();
 
   return (
     <div
       className={styles.container}
-      onClick={() => handleNavigateToDetails({ id: id })}
+      onClick={() => handleNavigateToDetails({ id: id, type:typeShow })}
     >
       <div className={styles.content}>
         <img
@@ -30,6 +31,10 @@ export function Card({
           alt={original_title}
         />
         <div className={styles.rankingContainer}>
+          <img
+            src={Star}
+            alt='star_rating'
+          />
           <span className={styles.rating}>{vote_average}</span>
         </div>
       </div>

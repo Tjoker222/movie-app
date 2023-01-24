@@ -3,6 +3,7 @@ export type CardMovie = {
   poster_path: string;
   original_title: string;
   vote_average: number;
+  release_date: string;
 };
 type Genre = {
   id: number;
@@ -10,7 +11,7 @@ type Genre = {
 };
 
 export type MovieDetail = {
-  genres: Genre;
+  genres: Genre[];
   release_date: string;
   status: string;
   vote_average: number;
@@ -24,4 +25,7 @@ export type MovieDetail = {
   runtime: number;
   poster_path: string;
   tagline: string;
+  overview: string;
+  title: string;
+  name: string;
 };

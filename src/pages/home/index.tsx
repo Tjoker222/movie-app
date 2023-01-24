@@ -109,7 +109,7 @@ export function HomePage() {
                   original_title={res?.original_title}
                   poster_path={res?.poster_path}
                   vote_average={res?.vote_average}
-                  onClick={() => console.log("Ok")}
+                  typeShow={res?.release_date?'movie':'series'}
                   key={res?.id}
                 />
               ))}

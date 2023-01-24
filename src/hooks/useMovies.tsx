@@ -54,8 +54,8 @@ export function useMovies() {
     }
   }
 
-  const handleNavigateToDetails = useCallback(({ id }: { id: number }) => {
-    const route = `/detail/${id}`;
+  const handleNavigateToDetails = useCallback(({ id, type }: { id: number, type: string }) => {
+    const route = `/detail/${type}/${id}`;
     navigate(route);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

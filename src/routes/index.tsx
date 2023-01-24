@@ -12,7 +12,7 @@ export function AppRoutes() {
         <DefaultLayout>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/detail/:id" element={<DetailPage/>} />
+            <Route path="/detail/:type/:id" element={<DetailPage/>} />
           </Routes>
         </DefaultLayout>
       </FiltersProvider>

@@ -43,7 +43,10 @@
       }
 
       span {
-        color: var(--warning500);
+        color: var(--warning);
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+        font-weight: 400;
       }
     }
   }
