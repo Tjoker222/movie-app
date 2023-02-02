@@ -10,6 +10,9 @@
   transition: all 0.2s;
   border-width: 0.1rem;
   border: 0.1rem solid transparent;
+  @media screen and (max-width: 600px) {
+    height: 100%;
+  }
 
   &:hover {
     border-color: 0.1rem solid var(--gray400);

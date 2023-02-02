@@ -106,7 +106,7 @@ export function HomePage() {
               {data?.map((res) => (
                 <Card
                   id={res?.id}
-                  original_title={res?.original_title}
+                  original_title={res?.original_title?res?.original_title:res?.name}
                   poster_path={res?.poster_path}
                   vote_average={res?.vote_average}
                   typeShow={res?.release_date?'movie':'series'}

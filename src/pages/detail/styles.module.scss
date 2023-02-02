@@ -13,6 +13,10 @@
   row-gap: 8rem;
   padding: 0 12rem;
   margin: 4rem 0rem 16rem 0rem;
+  @media screen and (max-width: 600px) {
+    padding: 1rem 1.5rem;
+    margin: 4rem 0rem 4rem 0rem;
+  }
 }
 
 .initialThumb {
@@ -21,12 +25,18 @@
   display: flex;
   position: relative;
   height: 48rem;
+  @media screen and (max-width: 600px) {
+    height: 20rem;
+  }
 }
 
 .initialImage {
   width: 100%;
   border-radius: 4rem;
   object-fit: cover;
+  @media screen and (max-width: 600px) {
+    border-radius: 1.2rem;
+  }
 }
 
 .imageBackground {
@@ -39,6 +49,9 @@
   width: 100%;
   height: 100%;
   border-radius: 4rem;
+  @media screen and (max-width: 600px) {
+    border-radius: 1.2rem;
+  }
 }
 
 .titleDescription {
@@ -54,11 +67,19 @@
   border-radius: 2.4rem;
   bottom: -5rem;
   left: 7.8rem;
+  @media screen and (max-width: 600px) {
+    padding: 2rem;
+    border-radius: 1.2rem;
+  }
   h1 {
     font-size: 3.2rem;
     font-weight: 600;
     line-height: 4rem;
     color: var(--grey-50);
+    @media screen and (max-width: 600px) {
+      font-size: 1.6rem;
+      line-height: 2rem;
+    }
   }
 }
 
@@ -101,6 +122,10 @@
   column-gap: 8rem;
   width: 100%;
   justify-content: center;
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    row-gap: 4rem;
+  }
 }
 
 .descriptionImage {
@@ -108,6 +133,10 @@
   height: 72rem;
   border-radius: 2.4rem;
   object-fit: cover;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .showDetails {
@@ -115,17 +144,29 @@
   flex-direction: column;
   row-gap: 2.4rem;
   width: 48rem;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    height: 100%;
+  }
   h2 {
     font-size: 2.4rem;
     font-weight: 700;
     line-height: 3.2rem;
     color: var(--grey-50);
+    @media screen and (max-width: 600px) {
+      font-size: 2rem;
+    }
   }
   p {
     font-size: 2rem;
     line-height: 3.2rem;
     font-weight: 400;
     color: var(--grey300);
+    @media screen and (max-width: 600px) {
+      font-size: 1.8rem;
+      text-align: justify;
+      line-height: 2.5rem;
+    }
   }
 }
 
@@ -177,18 +218,24 @@
     font-weight: 400;
     line-height: 2.4rem;
     color: var(--grey400);
+    @media screen and (max-width: 600px) {
+      font-size: 1.2rem;
+    }
   }
   p {
     font-size: 2rem;
     font-weight: 400;
     line-height: 3.2rem;
     color: var(--grey100);
+    @media screen and (max-width: 600px) {
+      font-size: 1.6rem;
+    }
   }
 }
 
 .genres{
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
 }
