@@ -4,6 +4,7 @@ export type CardMovie = {
   original_title: string;
   vote_average: number;
   release_date: string;
+  name: string;
 };
 type Genre = {
   id: number;
